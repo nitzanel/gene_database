@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Genetic expression graphs </title>
+		<link rel='stylesheet' type='text/css' href="{{ url_for('static',filename='css/style.css') }}">
+		<meta charset="utf-8">
+		<meta name = 'description' content="A website designed to display expression graphs">
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/js/sijax/sijax.js"></script>
+		<script type="text/javascript"> {{ g.sijax.get_js()|safe }}	</script>
+
+	</head>
+	
+	<header>
+		<nav>
+			<a {% if request.path =='/' %} 				  	class="active"{% endif %} href="{{ url_for('home') }}"> <strong> Home </strong></a>
+			<a {% if request.path.startswith('/genes') %} 	class="active"{% endif %} href="{{ url_for('genes') }}"> <strong> Genes </strong></a>
+			<a {% if request.path =='/about' %} 		  	class="active"{% endif %} href="{{ url_for('about') }}"> <strong> About </strong></a>
+		</nav>
+	</header>
+
+	<body>
+		<div id = 'content'>
+			{% block body %} {% endblock %}
+		</div>
+	</body>
+</html>
